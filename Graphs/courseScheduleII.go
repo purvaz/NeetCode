@@ -25,8 +25,8 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 		if visit[crs] {
 			return true
 		}
-		cycle[crs] = true
 
+		cycle[crs] = true
 		for _, pre := range prereqMap[crs] {
 			if !dfs(pre) {
 				return false
@@ -34,7 +34,9 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 		}
 		cycle[crs] = false
 		visit[crs] = true
+
 		output = append(output, crs)
+
 		return true
 	}
 
