@@ -3,6 +3,7 @@ package Graphs
 func canFinish(numCourses int, prerequisites [][]int) bool {
 
 	prereqMap := make(map[int][]int)
+
 	for i := 0; i < numCourses; i++ {
 		prereqMap[i] = []int{}
 	}
@@ -35,6 +36,7 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 
 		visited[course] = false
 		prereqMap[course] = []int{}
+
 		return true
 	}
 
