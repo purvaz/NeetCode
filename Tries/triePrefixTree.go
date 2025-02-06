@@ -9,7 +9,7 @@ type Trie struct {
 	root *TrieNode
 }
 
-func Constructor() Trie {
+func ConstructorTN() Trie {
 	return Trie{root: &TrieNode{children: make(map[rune]*TrieNode)}}
 }
 

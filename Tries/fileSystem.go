@@ -43,7 +43,7 @@ type FileSystem struct {
 	trie *trie
 }
 
-func Constructor() FileSystem {
+func ConstructorFS() FileSystem {
 	return FileSystem{trie: newTrie(-1)}
 }
 
