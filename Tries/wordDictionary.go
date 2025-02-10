@@ -33,11 +33,7 @@ func (this *WordDictionary) AddWord(word string) {
 	current.wordEnd = true
 }
 
-func (this *WordDictionary) Search(word string) bool {
-
-}
-
-func (this *WordDictionary) dfs(word string, j int, root *TrieNode) bool {
+func (this *WordDictionary) dfs(word string, j int, root *WordTrieNode) bool {
 
 	current := root
 
@@ -59,5 +55,9 @@ func (this *WordDictionary) dfs(word string, j int, root *TrieNode) bool {
 			current = current.children[rune(index)]
 		}
 	}
-	return current.endOfWord
+	return current.wordEnd
+}
+
+func (this *WordDictionary) Search(word string) bool {
+	return this.dfs(word, 0, this.root)
 }
