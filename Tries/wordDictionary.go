@@ -8,6 +8,7 @@ package Tries
  */
 
 type WordDictionary struct {
+	store []string
 }
 
 func Constructor() WordDictionary {
