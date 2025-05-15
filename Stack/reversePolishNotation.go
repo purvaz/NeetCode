@@ -9,9 +9,8 @@ func EvalRPN(tokens []string) int {
 	opStack := []int{}
 	for i := 0; i < len(tokens); i++ {
 		if tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*" || tokens[i] == "/" {
-			op1, op2 := 0, 0
-			op2, opStack = pop(opStack)
-			op1, opStack = pop(opStack)
+			op2 := pop(&opStack)
+			op1 := pop(&opStack)
 			opStack = append(opStack, getResult(op1, op2, tokens[i]))
 		} else {
 			num, _ := strconv.Atoi(tokens[i])
@@ -21,10 +20,11 @@ func EvalRPN(tokens []string) int {
 	return opStack[0]
 }
 
-func pop(stack []int) (int, []int) {
-	num := stack[len(stack)-1]
-	stack = stack[:len(stack)-1]
-	return num, stack
+func pop(stack *[]int) int {
+	n := len(*stack)
+	num := (*stack)[n-1]
+	*stack = (*stack)[:n-1]
+	return num
 }
 
 func getResult(op1, op2 int, operator string) int {
